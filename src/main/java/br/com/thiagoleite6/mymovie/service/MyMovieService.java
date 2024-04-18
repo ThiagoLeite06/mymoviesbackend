@@ -7,10 +7,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class MyMovieService {
-    public String getData(String endereco) {
+    public String getData(String url) {
         HttpClient client = HttpClient.newHttpClient();
         HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create(endereco))
+                .uri(URI.create(url))
                 .build();
         HttpResponse<String> response = null;
         try {
