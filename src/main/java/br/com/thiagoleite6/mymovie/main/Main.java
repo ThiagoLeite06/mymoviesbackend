@@ -27,15 +27,15 @@ public class Main {
         Serie serie = conversor.getData(json, Serie.class);
         System.out.println(serie);
 
-        List<Season> temporadas = new ArrayList<>();
+        List<Season> seasons = new ArrayList<>();
 
-//		for(int i = 1; i<=dados.totalSeasons(); i++) {
-//			json = service.getData("https://www.omdbapi.com/?t=friends&season=" + i + "&apikey=3dac087c");
-//			Season season = conversor.getData(json, Season.class);
-//			temporadas.add(season);
-//		}
-//
-//        temporadas.forEach(System.out::println);
+		for(int i = 1; i<=serie.totalSeasons(); i++) {
+			json = service.getData("https://www.omdbapi.com/?t=" + serieName + "&season=" + i + "&apikey=3dac087c");
+			Season season = conversor.getData(json, Season.class);
+            seasons.add(season);
+		}
+
+         seasons.forEach(s -> s.episodes().forEach(e -> System.out.println(e.title())));
     }
 
 }
