@@ -6,8 +6,10 @@ import br.com.thiagoleite6.mymovie.service.ConverteDados;
 import br.com.thiagoleite6.mymovie.service.MyMovieService;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collectors;
 
 public class Main {
     private Scanner read = new Scanner(System.in);
@@ -36,6 +38,15 @@ public class Main {
 		}
 
          seasons.forEach(s -> s.episodes().forEach(e -> System.out.println(e.title())));
+
+        List<String> palavras = Arrays.asList("Java", "Stream", "Operações", "Intermediárias");
+
+        List<Integer> tamanhos = palavras.stream()
+                .map(s -> s.length())
+                .collect(Collectors.toList());
+
+        System.out.println(tamanhos); // Output: [4, 6, 11, 17]
+
     }
 
 }
